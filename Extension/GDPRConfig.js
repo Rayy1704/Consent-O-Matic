@@ -43,7 +43,8 @@ export default class GDPRConfig {
     }    
 
     static defaultSettings = {
-        quickAcceptMode: false
+        quickAcceptMode: false,
+        quickRejectMode: false
     };
 
     static getGeneralSettings() {

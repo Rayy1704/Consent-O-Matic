@@ -45,6 +45,27 @@ if (optionsUL){
         
         quickAcceptCheckbox.addEventListener("change", (evt) => {
             generalSettings.quickAcceptMode = evt.target.checked;
+            if (evt.target.checked) {
+                // Uncheck reject mode if accept mode is checked
+                quickRejectCheckbox.checked = false;
+                generalSettings.quickRejectMode = false;
+            }
+            chrome.storage.sync.set({
+                generalSettings: generalSettings
+            });
+        });
+
+        // Quick Reject Mode toggle
+        let quickRejectCheckbox = document.querySelector("#quickRejectMode");
+        quickRejectCheckbox.checked = generalSettings.quickRejectMode || false;
+        
+        quickRejectCheckbox.addEventListener("change", (evt) => {
+            generalSettings.quickRejectMode = evt.target.checked;
+            if (evt.target.checked) {
+                // Uncheck accept mode if reject mode is checked
+                quickAcceptCheckbox.checked = false;
+                generalSettings.quickAcceptMode = false;
+            }
             chrome.storage.sync.set({
                 generalSettings: generalSettings
             });
