@@ -39,6 +39,17 @@ if (optionsUL){
     });
 
     GDPRConfig.getGeneralSettings().then((generalSettings)=>{
+        // Quick Accept Mode toggle
+        let quickAcceptCheckbox = document.querySelector("#quickAcceptMode");
+        quickAcceptCheckbox.checked = generalSettings.quickAcceptMode || false;
+        
+        quickAcceptCheckbox.addEventListener("change", (evt) => {
+            generalSettings.quickAcceptMode = evt.target.checked;
+            chrome.storage.sync.set({
+                generalSettings: generalSettings
+            });
+        });
+
         let hideOrPipForm = document.querySelector("#generalTab #hideOrPip");
         let hideOrPipRadioGroup = hideOrPipForm.elements["hideOrPip"];
         if(generalSettings.hideInsteadOfPIP) {

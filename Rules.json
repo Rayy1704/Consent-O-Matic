@@ -1,4 +1,41 @@
 {
+  "QuickAccept": {
+    "detectors": [
+      {
+        "presentMatcher": {
+          "type": "css",
+          "target": {
+            "selector": "body"
+          }
+        },
+        "showingMatcher": [
+          {
+            "type": "css",
+            "target": {
+              "selector": "button, [role='button'], a, div",
+              "textFilter": ["Accept all", "Accept cookies", "Allow all", "I accept", "Accept", "Agree", "OK", "Got it"],
+              "displayFilter": true
+            }
+          }
+        ]
+      }
+    ],
+    "methods": [
+      {
+        "name": "HIDE_CMP"
+      },
+      {
+        "name": "DO_CONSENT",
+        "action": {
+          "type": "click",
+          "target": {
+            "selector": "button, [role='button'], a, div",
+            "textFilter": ["Accept all", "Accept cookies", "Allow all", "I accept", "Accept", "Agree", "OK", "Got it"]
+          }
+        }
+      }
+    ]
+  },
   "Autodesk":{
     "detectors":[
       {

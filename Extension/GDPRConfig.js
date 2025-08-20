@@ -42,6 +42,10 @@ export default class GDPRConfig {
         });
     }    
 
+    static defaultSettings = {
+        quickAcceptMode: false
+    };
+
     static getGeneralSettings() {
         return new Promise((resolve, reject) => {
             chrome.storage.sync.get({

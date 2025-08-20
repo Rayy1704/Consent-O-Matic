@@ -5,6 +5,18 @@ export default class ConsentEngine {
         let self = this;
 
         this.consentTypes = consentTypes;
+        
+        // Check if quick accept mode is enabled
+        chrome.storage.sync.get({
+            generalSettings: { quickAcceptMode: false }
+        }, (result) => {
+            if (result.generalSettings.quickAcceptMode) {
+                // When in quick accept mode, set all consent types to true
+                Object.keys(this.consentTypes).forEach(key => {
+                    this.consentTypes[key] = true;
+                });
+            }
+        });
 
         this.cmps = [];
 
