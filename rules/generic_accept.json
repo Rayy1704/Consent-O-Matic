@@ -1,0 +1,34 @@
+{
+    "GenericAcceptButton": {
+        "detectors": [
+            {
+                "presentMatcher": {
+                    "type": "css",
+                    "target": {
+                        "selector": "[class*='cookie' i], [id*='cookie' i], [class*='consent' i], [id*='consent' i]",
+                        "displayFilter": true
+                    }
+                },
+                "showingMatcher": {
+                    "type": "css",
+                    "target": {
+                        "selector": "button, [role='button'], a",
+                        "textFilter": ["Accept", "Accept all", "Allow all", "Allow cookies", "Agree", "I agree", "OK", "Got it"]
+                    }
+                }
+            }
+        ],
+        "methods": [
+            {
+                "name": "DO_CONSENT",
+                "action": {
+                    "type": "click",
+                    "target": {
+                        "selector": "button, [role='button'], a",
+                        "textFilter": ["Accept", "Accept all", "Allow all", "Allow cookies", "Agree", "I agree", "OK", "Got it"]
+                    }
+                }
+            }
+        ]
+    }
+}
